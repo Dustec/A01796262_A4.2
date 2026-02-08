@@ -44,7 +44,7 @@ def run_test_case(test_number):
 
         # Ejecutar wordCount.py
         result = subprocess.run(
-            [sys.executable, "wordCount.py", input_file, output_file],
+            [sys.executable, "word_count.py", input_file, output_file],
             capture_output=True,
             text=True,
             timeout=30

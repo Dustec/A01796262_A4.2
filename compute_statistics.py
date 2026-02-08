@@ -4,6 +4,7 @@ Programa para calcular estadísticas descriptivas de un archivo de datos.
 Autor: A01796262
 Fecha: Febrero 2026
 """
+# pylint: disable=C0103  # Nombre del módulo fijado por el enunciado (computeStatistics.py)
 
 import sys
 import time
@@ -139,9 +140,8 @@ def calculate_median(numbers):
     if n % 2 == 0:
         # Si hay cantidad par, promedio de los dos valores centrales
         return (sorted_numbers[n // 2 - 1] + sorted_numbers[n // 2]) / 2
-    else:
-        # Si hay cantidad impar, valor central
-        return sorted_numbers[n // 2]
+    # Si hay cantidad impar, valor central
+    return sorted_numbers[n // 2]
 
 
 def calculate_mode(numbers, count_invalid_as_zero=0):
@@ -269,14 +269,12 @@ def format_value(value):
     """
     if value is None:
         return "N/A"
-    elif isinstance(value, (int, float)):
+    if isinstance(value, (int, float)):
         # Para números muy grandes, usar notación científica
         if abs(value) > 1e15:
             return f"{value:.10e}"
-        else:
-            return f"{value:.10f}"
-    else:
-        return str(value)
+        return f"{value:.10f}"
+    return str(value)
 
 
 def display_results(result, elapsed_time):
@@ -333,7 +331,7 @@ def save_results_to_file(result, elapsed_time, output_filename):
     except PermissionError:
         print(f"Error: No se tiene permiso para escribir en "
               f"'{output_filename}'")
-    except Exception as e:
+    except OSError as e:
         print(f"Error al guardar resultados: {e}")
 
 

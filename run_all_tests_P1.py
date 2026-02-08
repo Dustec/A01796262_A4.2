@@ -44,7 +44,7 @@ def run_test_case(test_number):
 
         # Ejecutar computeStatistics.py
         result = subprocess.run(
-            [sys.executable, "computeStatistics.py", input_file, output_file],
+            [sys.executable, "compute_statistics.py", input_file, output_file],
             capture_output=True,
             text=True,
             timeout=30

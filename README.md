@@ -23,9 +23,9 @@ Repositorio con los **3 ejercicios de programación** de la Actividad 4.2 (Calid
 ## Estructura del repositorio
 
 ```
-├── computeStatistics.py   # Programa 1: estadísticas descriptivas
-├── convertNumbers.py     # Programa 2: conversión a binario y hexadecimal
-├── wordCount.py         # Programa 3: conteo de palabras
+├── compute_statistics.py   # Programa 1: estadísticas descriptivas
+├── convert_numbers.py     # Programa 2: conversión a binario y hexadecimal
+├── word_count.py         # Programa 3: conteo de palabras
 ├── run_all_tests_P1.py  # Ejecuta todos los casos de prueba P1
 ├── run_all_tests_P2.py  # Ejecuta todos los casos de prueba P2
 ├── run_all_tests_P3.py  # Ejecuta todos los casos de prueba P3
@@ -43,56 +43,56 @@ Repositorio con los **3 ejercicios de programación** de la Actividad 4.2 (Calid
 
 ## Programas
 
-### 1. Compute Statistics (`computeStatistics.py`)
+### 1. Compute Statistics (`compute_statistics.py`)
 
 Calcula **estadísticas descriptivas** de un archivo con números (uno por línea): **media, mediana, moda, desviación estándar y varianza**. Los cálculos se realizan con algoritmos básicos (sin librerías estadísticas). Incluye manejo de datos inválidos y tiempo de ejecución en consola y en archivo.
 
 **Uso:**
 
 ```bash
-python computeStatistics.py <archivo_entrada> <archivo_salida>
+python compute_statistics.py <archivo_entrada> <archivo_salida>
 ```
 
 **Ejemplo:**
 
 ```bash
-python computeStatistics.py tests/P1/TC1.txt results/P1/StatisticsResults.txt
+python compute_statistics.py tests/P1/TC1.txt results/P1/StatisticsResults.txt
 ```
 
 ---
 
-### 2. Converter (`convertNumbers.py`)
+### 2. Converter (`convert_numbers.py`)
 
 Convierte números enteros de un archivo a **binario** y **hexadecimal** usando algoritmos propios (sin `bin()`/`hex()` para la lógica principal). Maneja datos inválidos y escribe el tiempo de ejecución en consola y en archivo.
 
 **Uso:**
 
 ```bash
-python convertNumbers.py <archivo_entrada> <archivo_salida>
+python convert_numbers.py <archivo_entrada> <archivo_salida>
 ```
 
 **Ejemplo:**
 
 ```bash
-python convertNumbers.py tests/P2/TC1.txt results/P2/ConversionResults.txt
+python convert_numbers.py tests/P2/TC1.txt results/P2/ConversionResults.txt
 ```
 
 ---
 
-### 3. Word Count (`wordCount.py`)
+### 3. Word Count (`word_count.py`)
 
 Cuenta **palabras distintas** y su **frecuencia** en un archivo de texto. Los resultados se imprimen en consola y se guardan en un archivo, con tiempo de ejecución. Implementado con estructuras básicas y manipulación de cadenas.
 
 **Uso:**
 
 ```bash
-python wordCount.py <archivo_entrada> <archivo_salida>
+python word_count.py <archivo_entrada> <archivo_salida>
 ```
 
 **Ejemplo:**
 
 ```bash
-python wordCount.py tests/P3/TC1.txt results/P3/WordCountResults.txt
+python word_count.py tests/P3/TC1.txt results/P3/WordCountResults.txt
 ```
 
 ---
@@ -116,26 +116,16 @@ Los resultados se guardan en `results/P1`, `results/P2` y `results/P3` (archivos
 Se debe verificar que no haya errores ni problemas reportados por PyLint:
 
 ```bash
-pylint computeStatistics.py
-pylint convertNumbers.py
-pylint wordCount.py
+pylint compute_statistics.py
+pylint convert_numbers.py
+pylint word_count.py
 ```
+
+**Important:** To comply PEP 8 standards the file names were writeen in snake case.
 
 Tipos de mensajes: **(C)** convención, **(R)** refactor, **(W)** warning, **(E)** error, **(F)** fatal. La actividad requiere **cero problemas** para la calificación completa en análisis estático.
 
----
-
-## Criterios de evaluación (resumen)
-
-| Criterio | Puntos |
-|----------|--------|
-| **Programa 1** – PyLint/PEP 8 (cero errores) | 10 |
-| **Programa 1** – Casos de prueba (7 correctos) | 20 |
-| **Programa 2** – PyLint/PEP 8 (cero errores) | 10 |
-| **Programa 2** – Casos de prueba (7 correctos) | 25 |
-| **Programa 3** – PyLint/PEP 8 (cero errores) | 10 |
-| **Programa 3** – Casos de prueba (7 correctos) | 25 |
-| **Total** | **100** |
+[Evidence Pylint](/assets/evidence_pylint.png)
 
 ---
 

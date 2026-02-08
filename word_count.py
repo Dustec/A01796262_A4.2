@@ -4,6 +4,7 @@ Programa para contar la frecuencia de palabras en un archivo de texto.
 Autor: A01796262
 Fecha: Febrero 2026
 """
+# pylint: disable=C0103  # Nombre del módulo fijado por el enunciado (wordCount.py)
 
 import sys
 import time
@@ -31,7 +32,7 @@ def read_text_from_file(filename):
     except PermissionError:
         print(f"Error: No se tiene permiso para leer el archivo '{filename}'")
         sys.exit(1)
-    except Exception as e:
+    except OSError as e:
         print(f"Error al leer el archivo: {e}")
         sys.exit(1)
 
@@ -213,7 +214,7 @@ def save_results_to_file(sorted_count, total_words, unique_words,
     except PermissionError:
         print(f"Error: No se tiene permiso para escribir en "
               f"'{output_filename}'")
-    except Exception as e:
+    except OSError as e:
         print(f"Error al guardar resultados: {e}")
 
 

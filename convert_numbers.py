@@ -4,6 +4,7 @@ Programa para convertir números a representación binaria y hexadecimal.
 Autor: A01796262
 Fecha: Febrero 2026
 """
+# pylint: disable=C0103  # Nombre del módulo fijado por el enunciado (convertNumbers.py)
 
 import sys
 import time
@@ -71,15 +72,14 @@ def int_to_binary(number):
     if number > 0:
         # Números positivos: conversión directa
         return bin(number)[2:]  # Remover '0b'
-    else:
-        # Números negativos: complemento a 2 con 10 bits
-        bits = 10
-        mask = (1 << bits) - 1  # Máscara de 10 bits
-        binary_value = (number & mask)
+    # Números negativos: complemento a 2 con 10 bits
+    bits = 10
+    mask = (1 << bits) - 1  # Máscara de 10 bits
+    binary_value = number & mask
 
-        # Convertir a binario y asegurar 10 dígitos
-        binary_str = bin(binary_value)[2:]
-        return binary_str.zfill(bits)  # Rellenar con ceros a la izquierda
+    # Convertir a binario y asegurar 10 dígitos
+    binary_str = bin(binary_value)[2:]
+    return binary_str.zfill(bits)  # Rellenar con ceros a la izquierda
 
 
 def int_to_hexadecimal(number):
@@ -100,15 +100,14 @@ def int_to_hexadecimal(number):
     if number > 0:
         # Números positivos: conversión directa
         return hex(number)[2:].upper()  # Remover '0x' y convertir a mayúsculas
-    else:
-        # Números negativos: complemento a 2 con 10 dígitos hex (40 bits)
-        bits = 40
-        mask = (1 << bits) - 1
-        hex_value = (number & mask)
+    # Números negativos: complemento a 2 con 10 dígitos hex (40 bits)
+    bits = 40
+    mask = (1 << bits) - 1
+    hex_value = number & mask
 
-        # Convertir a hexadecimal y asegurar 10 dígitos
-        hex_str = hex(hex_value)[2:].upper()
-        return hex_str.zfill(10)  # Rellenar con ceros (o F's naturalmente)
+    # Convertir a hexadecimal y asegurar 10 dígitos
+    hex_str = hex(hex_value)[2:].upper()
+    return hex_str.zfill(10)  # Rellenar con ceros (o F's naturalmente)
 
 
 def convert_number(value):
@@ -125,9 +124,8 @@ def convert_number(value):
         binary = int_to_binary(value)
         hexadecimal = int_to_hexadecimal(value)
         return (value, binary, hexadecimal)
-    else:
-        # Valor inválido
-        return (value, "#VALUE!", "#VALUE!")
+    # Valor inválido
+    return (value, "#VALUE!", "#VALUE!")
 
 
 def process_file(filename):
@@ -143,7 +141,7 @@ def process_file(filename):
     data = read_integers_from_file(filename)
     results = []
 
-    for item_num, (line_num, value) in enumerate(data, 1):
+    for item_num, (_, value) in enumerate(data, 1):
         original, binary, hexadecimal = convert_number(value)
         results.append((item_num, original, binary, hexadecimal))
 
@@ -217,7 +215,7 @@ def save_results_to_file(results, elapsed_time, output_filename):
     except PermissionError:
         print(f"Error: No se tiene permiso para escribir en "
               f"'{output_filename}'")
-    except Exception as e:
+    except OSError as e:
         print(f"Error al guardar resultados: {e}")
 
 

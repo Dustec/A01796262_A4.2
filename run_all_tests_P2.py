@@ -89,9 +89,10 @@ def generate_consolidated_report(results):
     try:
         with open(consolidated_file, 'w', encoding='utf-8') as f:
             f.write("=" * 80 + "\n")
-            f.write("REPORTE CONSOLIDADO - PROGRAMA P2: convertNumbers.py\n")
+            f.write("REPORTE CONSOLIDADO - PROGRAMA P2: convert_numbers.py\n")
             f.write("Autor: A01796262\n")
-            f.write(f"Fecha de ejecución: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(
+                f"Fecha de ejecución: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
             f.write("=" * 80 + "\n\n")
 
             # Resumen de ejecución
@@ -104,7 +105,7 @@ def generate_consolidated_report(results):
             f.write(f"Casos exitosos: {successful_tests}\n")
             f.write(f"Casos fallidos: {total_tests - successful_tests}\n")
             f.write(f"Porcentaje de éxito: "
-                   f"{(successful_tests/total_tests)*100:.1f}%\n")
+                    f"{(successful_tests/total_tests)*100:.1f}%\n")
             f.write("-" * 80 + "\n\n")
 
             # Resultados individuales
@@ -118,7 +119,7 @@ def generate_consolidated_report(results):
                 if result['success']:
                     f.write(f"Estado: EXITOSO\n")
                     f.write(f"Tiempo de ejecución: {result['time']:.4f} "
-                           f"segundos\n")
+                            f"segundos\n")
                     f.write("-" * 80 + "\n")
                     f.write(result['output'])
                 else:
