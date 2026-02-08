@@ -1,7 +1,7 @@
 ================================================================================
 REPORTE CONSOLIDADO - PROGRAMA P2: convertNumbers.py
 Autor: A01796262
-Fecha de ejecución: 2026-02-08 12:49:00
+Fecha de ejecución: 2026-02-08 13:42:34
 ================================================================================
 
 RESUMEN DE EJECUCIÓN:
@@ -17,7 +17,7 @@ Porcentaje de éxito: 100.0%
 TEST CASE 1
 ================================================================================
 Estado: EXITOSO
-Tiempo de ejecución: 0.0291 segundos
+Tiempo de ejecución: 0.0312 segundos
 --------------------------------------------------------------------------------
 ================================================================================
 CONVERSIÓN DE NÚMEROS A BINARIO Y HEXADECIMAL
@@ -226,7 +226,7 @@ ITEM   NÚMERO          BINARIO                        HEXADECIMAL
 200    2250854         1000100101100001100110         225866         
 ================================================================================
 Total de elementos procesados: 200
-Tiempo de ejecución: 0.000206 segundos
+Tiempo de ejecución: 0.000619 segundos
 ================================================================================
 
 
@@ -234,7 +234,7 @@ Tiempo de ejecución: 0.000206 segundos
 TEST CASE 2
 ================================================================================
 Estado: EXITOSO
-Tiempo de ejecución: 0.0303 segundos
+Tiempo de ejecución: 0.0309 segundos
 --------------------------------------------------------------------------------
 ================================================================================
 CONVERSIÓN DE NÚMEROS A BINARIO Y HEXADECIMAL
@@ -443,7 +443,7 @@ ITEM   NÚMERO          BINARIO                        HEXADECIMAL
 200    39              100111                         27             
 ================================================================================
 Total de elementos procesados: 200
-Tiempo de ejecución: 0.000212 segundos
+Tiempo de ejecución: 0.000438 segundos
 ================================================================================
 
 
@@ -451,7 +451,7 @@ Tiempo de ejecución: 0.000212 segundos
 TEST CASE 3
 ================================================================================
 Estado: EXITOSO
-Tiempo de ejecución: 0.0342 segundos
+Tiempo de ejecución: 0.0317 segundos
 --------------------------------------------------------------------------------
 ================================================================================
 CONVERSIÓN DE NÚMEROS A BINARIO Y HEXADECIMAL
@@ -660,7 +660,7 @@ ITEM   NÚMERO          BINARIO                        HEXADECIMAL
 200    4               100                            4              
 ================================================================================
 Total de elementos procesados: 200
-Tiempo de ejecución: 0.000307 segundos
+Tiempo de ejecución: 0.000559 segundos
 ================================================================================
 
 
@@ -668,7 +668,7 @@ Tiempo de ejecución: 0.000307 segundos
 TEST CASE 4
 ================================================================================
 Estado: EXITOSO
-Tiempo de ejecución: 0.0297 segundos
+Tiempo de ejecución: 0.0298 segundos
 --------------------------------------------------------------------------------
 ================================================================================
 CONVERSIÓN DE NÚMEROS A BINARIO Y HEXADECIMAL
@@ -718,7 +718,7 @@ ITEM   NÚMERO          BINARIO                        HEXADECIMAL
 41     VAL             #VALUE!                        #VALUE!        
 ================================================================================
 Total de elementos procesados: 41
-Tiempo de ejecución: 0.000131 segundos
+Tiempo de ejecución: 0.000347 segundos
 ================================================================================
 
 

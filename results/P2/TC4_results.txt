@@ -46,5 +46,5 @@ ITEM   NÚMERO          BINARIO                        HEXADECIMAL
 41     VAL             #VALUE!                        #VALUE!        
 ================================================================================
 Total de elementos procesados: 41
-Tiempo de ejecución: 0.000131 segundos
+Tiempo de ejecución: 0.000347 segundos
 ================================================================================
