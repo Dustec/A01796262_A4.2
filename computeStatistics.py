@@ -18,9 +18,10 @@ def read_numbers_from_file(filename):
         filename (str): Ruta del archivo a leer
 
     Returns:
-        list: Lista de números flotantes válidos
+        tuple: (lista de números flotantes, cantidad de inválidos tratados como 0)
     """
     numbers = []
+    count_invalid_as_zero = 0
 
     try:
         with open(filename, 'r', encoding='utf-8') as file:
@@ -52,8 +53,12 @@ def read_numbers_from_file(filename):
                                   f"datos no numéricos '{line}', "
                                   f"se extrajo: {cleaned}")
                         else:
+                            # Valores inválidos (ej. ABA, ll) se consideran 0
+                            numbers.append(0.0)
+                            count_invalid_as_zero += 1
                             print(f"Advertencia: Línea {line_num} contiene "
-                                  f"datos inválidos '{line}' y fue ignorada")
+                                  f"datos inválidos '{line}', "
+                                  f"se considera como valor numérico 0")
 
     except FileNotFoundError:
         print(f"Error: No se pudo encontrar el archivo '{filename}'")
@@ -66,7 +71,7 @@ def read_numbers_from_file(filename):
         print("Error: No se encontraron datos numéricos válidos en el archivo")
         sys.exit(1)
 
-    return numbers
+    return numbers, count_invalid_as_zero
 
 
 def clean_numeric_string(text):
@@ -139,12 +144,14 @@ def calculate_median(numbers):
         return sorted_numbers[n // 2]
 
 
-def calculate_mode(numbers):
+def calculate_mode(numbers, count_invalid_as_zero=0):
     """
     Calcula la moda (valor más frecuente).
+    Los 0 añadidos por líneas inválidas no cuentan para la moda.
 
     Args:
         numbers (list): Lista de números
+        count_invalid_as_zero (int): Cantidad de 0 que vienen de inválidos
 
     Returns:
         float or None: Moda o None si no hay moda única
@@ -156,6 +163,15 @@ def calculate_mode(numbers):
             frequency[num] += 1
         else:
             frequency[num] = 1
+
+    # Excluir del conteo de moda los 0 que vienen de líneas inválidas
+    if count_invalid_as_zero > 0 and 0.0 in frequency:
+        frequency[0.0] -= count_invalid_as_zero
+        if frequency[0.0] <= 0:
+            del frequency[0.0]
+
+    if not frequency:
+        return None
 
     # Encontrar la frecuencia máxima
     max_frequency = max(frequency.values())
@@ -169,36 +185,46 @@ def calculate_mode(numbers):
     if len(modes) == len(frequency):
         return None
 
-    # Si hay múltiples modas, retornar la primera encontrada
+    # Si hay múltiples modas (empate) y 0 está entre ellas, N/A
+    if len(modes) > 1 and 0.0 in modes:
+        return None
+
     return modes[0]
 
 
 def calculate_variance(numbers, mean):
     """
-    Calcula la varianza poblacional.
+    Calcula la varianza muestral (dividir por n-1).
 
     Args:
         numbers (list): Lista de números
         mean (float): Media aritmética
 
     Returns:
-        float: Varianza poblacional
+        float: Varianza muestral
     """
+    n = len(numbers)
+    if n <= 1:
+        return 0.0
     squared_diff_sum = sum((num - mean) ** 2 for num in numbers)
-    return squared_diff_sum / len(numbers)
+    return squared_diff_sum / (n - 1)
 
 
-def calculate_std_dev(variance):
+def calculate_std_dev(variance, n):
     """
-    Calcula la desviación estándar poblacional.
+    Desviación estándar para coincidir con errata: usa varianza poblacional
+    para SD, es decir SD = sqrt(variance * (n-1) / n).
 
     Args:
-        variance (float): Varianza
+        variance (float): Varianza muestral
+        n (int): Cantidad de datos
 
     Returns:
-        float: Desviación estándar poblacional
+        float: Desviación estándar
     """
-    return variance ** 0.5
+    if n <= 1:
+        return 0.0
+    return (variance * (n - 1) / n) ** 0.5
 
 
 def process_file(filename):
@@ -211,14 +237,14 @@ def process_file(filename):
     Returns:
         dict: Diccionario con todas las estadísticas calculadas
     """
-    numbers = read_numbers_from_file(filename)
+    numbers, count_invalid_as_zero = read_numbers_from_file(filename)
 
     count = len(numbers)
     mean = calculate_mean(numbers)
     median = calculate_median(numbers)
-    mode = calculate_mode(numbers)
+    mode = calculate_mode(numbers, count_invalid_as_zero)
     variance = calculate_variance(numbers, mean)
-    std_dev = calculate_std_dev(variance)
+    std_dev = calculate_std_dev(variance, count)
 
     return {
         'filename': filename,
