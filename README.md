@@ -1,4 +1,15 @@
-# A01796262_A4.2 — Actividad 4.2 Ejercicio de programación 1
+# ![TEC Logo](assets/tec_logo.png)
+
+## MAESTRÍA EN INTELIGENCIA ARTIFICIAL APLICADA
+
+---
+
+### **Curso: TC4017 - Pruebas de software y aseguramiento de la calidad**
+ 
+#### **Alumno:** Héctor Alejandro Álvarez Rosas
+#### **Matrícula:** A01796262
+
+# Actividad 4.2 Ejercicio de programación 1
 
 Repositorio con los **3 ejercicios de programación** de la Actividad 4.2 (Calidad de Software). Implementados en **Python** siguiendo **PEP 8** y verificados con **PyLint**.
 
