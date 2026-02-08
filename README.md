@@ -125,7 +125,7 @@ pylint word_count.py
 
 Tipos de mensajes: **(C)** convención, **(R)** refactor, **(W)** warning, **(E)** error, **(F)** fatal. La actividad requiere **cero problemas** para la calificación completa en análisis estático.
 
-[Evidence Pylint](/assets/evidence_pylint.png)
+![Evidence Pylint](assets/evidence_pylint.png)
 
 ---
 
